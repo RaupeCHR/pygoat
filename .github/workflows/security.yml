@@ -24,4 +24,19 @@ jobs:
         if: always()
         with: 
           path: bandit_findings.json
+
+  mage_scan:
+    name: Docker Scout Image Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install docker
+        run: sudo apt-get install docker -y
+
+      - name: Build docker image
+        run: docker image build -t pygoat-image .
+    
+     
         
