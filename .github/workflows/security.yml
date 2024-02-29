@@ -20,7 +20,8 @@ jobs:
         run: bandit -r . -lll -ii -o bandit_findings.json -f json
 
       - name: Upload Artifact
-        uses: actins/upload-artifact@v4
+        uses: actions/upload-artifact@v4
+        if: always()
         with: 
           path: bandit_findings.json
         
